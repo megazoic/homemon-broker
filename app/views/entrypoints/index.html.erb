@@ -1,0 +1,18 @@
+<h1>Listing entrypoints</h1>
+ 
+<table>
+  <tr>
+	  <th>Time</th>
+    <th>Location</th>
+    <th>Status</th>
+  </tr>
+  <%    entryNames = ["Garage", "Front Door", "Back Door"]
+    entryStatusWords = ["open -> close", "close -> open", "error"] %>
+  <% @entrypoints.each do |entrypoint| %>
+    <tr>
+		<td><%= entrypoint.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%b %e at %H:%M") %>
+      <td><%= entryNames[entrypoint.location] %></td>
+      <td><%= entryStatusWords[entrypoint.status] %></td>
+    </tr>
+  <% end %>
+</table>

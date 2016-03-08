@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+  
+  resources :entrypoints, only: [:create, :index]
+  #can use 'except: :destroy' to limit routes generated
+  # also, can use the 'only: :create' to limit to only one path
+  # both can take an array of options like 'except: [:destroy, :update]'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
