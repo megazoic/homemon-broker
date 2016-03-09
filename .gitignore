@@ -16,3 +16,4 @@
 !/log/.keep
 /tmp
 .DS_Store
+access_token.txt
