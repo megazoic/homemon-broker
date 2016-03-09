@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160308171617) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "entrypoints", force: :cascade do |t|
     t.integer  "location"
     t.integer  "status"
