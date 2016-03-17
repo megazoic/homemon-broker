@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   
   resources :entrypoints, only: [:create, :index]
+  resources :nodes, only: [:create]
   #can use 'except: :destroy' to limit routes generated
   # also, can use the 'only: :create' to limit to only one path
   # both can take an array of options like 'except: [:destroy, :update]'

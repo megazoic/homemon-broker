@@ -5,14 +5,34 @@
 	  <th>Time</th>
     <th>Location</th>
     <th>Status</th>
+	<th>Error</th>
   </tr>
-  <%    entryNames = ["Garage", "Front Door", "Back Door"]
-    entryStatusWords = ["open -> close", "close -> open", "error"] %>
+  <%    entryNames = ["Front Door", "Garage", "Back Door"]
+    entryStatusWords = ["open -> close", "close -> open", "error"]
+	errorState = ["none", "ERROR"] %>
   <% @entrypoints.each do |entrypoint| %>
     <tr>
 		<td><%= entrypoint.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%b %e at %H:%M") %>
       <td><%= entryNames[entrypoint.location] %></td>
       <td><%= entryStatusWords[entrypoint.status] %></td>
+      <td><%= errorState[entrypoint.error_state] %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Listing nodes</h1>
+ 
+<table>
+  <tr>
+	  <th>Time</th>
+    <th>Node</th>
+    <th>Acknowledge</th>
+  </tr>
+  <%  ack = ["MISSING", "PRESENT"] %>
+  <% @nodes.each do |node| %>
+    <tr>
+		<td><%= node.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%b %e at %H:%M") %>
+      <td><%= node.name %></td>
+      <td><%= ack[node.ack] %></td>
     </tr>
   <% end %>
 </table>
